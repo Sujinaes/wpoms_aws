@@ -21,20 +21,20 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             # 1. Navigate to the repo
-            cd /home/${{ secrets.EC2_USER }}/your-repo-folder
+            cd /home/${{ secrets.EC2_USER }}/wpoms_aws
 
             # 2. Pull the latest code
             git pull origin main
 
             # 3. Stop and remove the existing container (ignore error if it doesn't exist)
-            docker stop my-container-name || true
-            docker rm my-container-name || true
+            sudo docker stop wpoms_server || true
+            sudo docker rm wpoms_server || true
 
             # 4. Build the new image
-            docker build -t my-image-name .
+            sudo docker build -t wpoms_server .
 
             # 5. Run the new container
-            docker run -d --name my-container-name -p 80:80 my-image-name
+             sudo docker run -d --name wpoms_server -p 8081:8081 wpoms_server
 
 
 
