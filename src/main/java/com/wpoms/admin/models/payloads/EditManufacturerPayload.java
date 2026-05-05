@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 public class EditManufacturerPayload {
     @NotBlank(message = "Company Email is required")
     private String companyEmail;
-    @NotBlank(message = "Company name is required")
+    @NotBlank(message = "Company name is not required")
     private String companyName;
     @NotBlank(message = "Company Address is required")
     private String companyAddress;
